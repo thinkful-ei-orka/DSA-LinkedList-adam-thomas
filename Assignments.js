@@ -28,17 +28,16 @@ function main() {
   // console.log(findPrevious(SLL, 'Husker'));
   // console.log(findLast(SLL));
   //console.log(reverseList(SLL));
-  // reverseList(SLL);
+  reverseList(SLL);
   // reverseListTwo(SLL);
-  //display(SLL);
   // console.log(thirdFromEnd(SLL))
   // console.log(CycleInList(SLL))
   // SLL.insertLast('Boomer');
-  
   // SLL.insertOops('whoopsie');
   // console.log(CycleInList(SLL))
+  // console.log(middleOfList(SLL));
+
   display(SLL);
-  console.log(middleOfList(SLL));
   // let DLL = new DoubleLinkedList;
   // DLL.insertFirst('Aquaria');
   // DLL.insertLast('Caprica');
@@ -101,16 +100,18 @@ function findLast(list) {
   return list;
 }
 
-// function reverseList(list, ref = null) {
-//   let current = list.head;
 
-//   if (list.head.next !== null) {
-//     reverseList(list.head.next, current);
-//   } else {
-//     list.head = current;
-//   }
-//   return list;
-// }
+
+function reverseList(list, ref = null) {
+  if (!list.head) { return list; }
+  
+  let current = list.head;
+  list.remove(current.value);
+
+  let reverselist = reverseList(list);
+  reverselist.insertLast(current.value);
+  return reverselist;
+}
 
 function reverseListTwo(list) {
 
@@ -142,7 +143,7 @@ function middleOfList(list) {
   let current = list.head;
   let speedRacer = list.head;
 
-  while(speedRacer !== null && speedRacer.next !== null) {
+  while (speedRacer !== null && speedRacer.next !== null) {
     current = current.next;
     speedRacer = speedRacer.next.next;
   }
@@ -182,8 +183,6 @@ function reverseListDouble(list) {
   list.head = current;
   return list;
 }
-
-
 
 main();
 
