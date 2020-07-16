@@ -1,5 +1,6 @@
 const { LinkedList } = require('./LInkedList');
-const linkedList = new LinkedList;
+const { DoubleLinkedList } = require('./DoubleLinkedList');
+
 
 ////1
 //Complete, see LinkedList.js
@@ -27,9 +28,25 @@ function main() {
   //console.log(reverseList(SLL));
   // reverseList(SLL);
   // reverseListTwo(SLL);
-  display(SLL);
-
-  console.log(thirdFromEnd(SLL))
+  //display(SLL);
+  // console.log(thirdFromEnd(SLL))
+  // console.log(CycleInList(SLL))
+  // SLL.insertLast('Boomer');
+  
+  // SLL.insertOops('whoopsie');
+  // console.log(CycleInList(SLL))
+  // display(SLL);
+  let DLL = new DoubleLinkedList;
+  DLL.insertFirst('Aquaria');
+  DLL.insertLast('Caprica');
+  DLL.insertLast('Gemenon');
+  DLL.insertLast('Picon');
+  DLL.insertLast('Sagittaron');
+  DLL.insertLast('Tauron');
+  DLL.remove('Picon');
+  display(DLL);
+  reverseListDouble(DLL);
+  display(DLL);
 }
 
 ///3
@@ -117,6 +134,45 @@ function thirdFromEnd(list) {
   }
   return current;
 }
+
+function middleOfList(list) {
+
+}
+
+function CycleInList(list) {
+  let current = list.head;
+  let pointers = [];
+
+  while (current !== null) {
+    if (pointers.includes(current)) {
+      return true;
+    }
+    pointers.push(current);
+    current = current.next;
+  }
+  return false;
+}
+
+function reverseListDouble(list) {
+
+  let current = list.head;
+  let target = current.next;
+
+  list.head.next = null;
+
+  while (target !== null) {
+    let newCur = target.next;
+    target.next = current;
+    target.previous = newCur;
+    current = target;
+    target = newCur;
+  }
+
+  list.head = current;
+  return list;
+}
+
+
 
 main();
 

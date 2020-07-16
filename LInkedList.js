@@ -26,6 +26,19 @@ class LinkedList {
     }
   }
 
+  insertOops(item) {
+    if (this.head === null) {
+      this.insertFirst(item);
+    } else {
+      let tempNode = this.head;
+      while (tempNode.next !== null) {
+        tempNode = tempNode.next;
+      }
+      tempNode.next = new _Node(item, this.head);
+    }
+  }
+
+
   insertBefore(item, key) {
     if (!this.head) {
       return null;
