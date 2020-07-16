@@ -25,7 +25,11 @@ function main() {
   // console.log(findPrevious(SLL, 'Husker'));
   // console.log(findLast(SLL));
   //console.log(reverseList(SLL));
-  console.log(reverseListTwo(SLL));
+  // reverseList(SLL);
+  // reverseListTwo(SLL);
+  display(SLL);
+
+  console.log(thirdFromEnd(SLL))
 }
 
 ///3
@@ -77,56 +81,42 @@ function findLast(list) {
   return list;
 }
 
-function reverseList(list) {
-  if (!!list.head) {
-    list = list.head;
-  }
+// function reverseList(list, ref = null) {
+//   let current = list.head;
 
-  let current = list;
-  let previous = list;
-  let secondPrev = list;
-
-  while (current !== null) {
-    console.log(current)
-    current = current.next;
-    previous.next = secondPrev;
-    secondPrev = previous;
-    previous = current;
-  }
-
-  previous.next = secondPrev;
-  
-  return list;
-}
-
+//   if (list.head.next !== null) {
+//     reverseList(list.head.next, current);
+//   } else {
+//     list.head = current;
+//   }
+//   return list;
+// }
 
 function reverseListTwo(list) {
-  if(!!list.head) {
-    list = list.head;
-  }
 
-  let current = list;
-  let target = list.next;
+  let current = list.head;
+  let target = current.next;
+
+  list.head.next = null;
 
   while (target !== null) {
-    console.log(`current: ${current.value}`)
     let newCur = target.next;
     target.next = current;
     current = target;
     target = newCur;
   }
 
-  list = current;
+  list.head = current;
   return list;
 }
 
-
-/*
-  
-  cur         tar         newCur
-  ()    <-    ()     ->     ()
-
-*/
+function thirdFromEnd(list) {
+  let current = list.head;
+  while (current.next.next.next !== null) {
+    current = current.next;
+  }
+  return current;
+}
 
 main();
 
