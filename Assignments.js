@@ -15,6 +15,8 @@ function main() {
   SLL.insertLast('Husker');
   SLL.insertLast('Starbuck');
   SLL.insertLast('Tauhida');
+  SLL.insertLast('HOho');
+  SLL.insertLast('TauGamma');
   // SLL.remove('squirrel');
   SLL.insertBefore('Athena', 'Boomer');
   SLL.insertAfter('Hotdog', 'Helo');
@@ -35,18 +37,19 @@ function main() {
   
   // SLL.insertOops('whoopsie');
   // console.log(CycleInList(SLL))
-  // display(SLL);
-  let DLL = new DoubleLinkedList;
-  DLL.insertFirst('Aquaria');
-  DLL.insertLast('Caprica');
-  DLL.insertLast('Gemenon');
-  DLL.insertLast('Picon');
-  DLL.insertLast('Sagittaron');
-  DLL.insertLast('Tauron');
-  DLL.remove('Picon');
-  display(DLL);
-  reverseListDouble(DLL);
-  display(DLL);
+  display(SLL);
+  console.log(middleOfList(SLL));
+  // let DLL = new DoubleLinkedList;
+  // DLL.insertFirst('Aquaria');
+  // DLL.insertLast('Caprica');
+  // DLL.insertLast('Gemenon');
+  // DLL.insertLast('Picon');
+  // DLL.insertLast('Sagittaron');
+  // DLL.insertLast('Tauron');
+  // DLL.remove('Picon');
+  // display(DLL);
+  // reverseListDouble(DLL);
+  // display(DLL);
 }
 
 ///3
@@ -136,7 +139,15 @@ function thirdFromEnd(list) {
 }
 
 function middleOfList(list) {
+  let current = list.head;
+  let speedRacer = list.head;
 
+  while(speedRacer !== null && speedRacer.next !== null) {
+    current = current.next;
+    speedRacer = speedRacer.next.next;
+  }
+
+  return current;
 }
 
 function CycleInList(list) {
