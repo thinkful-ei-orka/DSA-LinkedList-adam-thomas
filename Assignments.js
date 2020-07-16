@@ -24,6 +24,8 @@ function main() {
   // console.log(isEmpty(SLL));
   // console.log(findPrevious(SLL, 'Husker'));
   // console.log(findLast(SLL));
+  //console.log(reverseList(SLL));
+  console.log(reverseListTwo(SLL));
 }
 
 ///3
@@ -74,6 +76,57 @@ function findLast(list) {
   }
   return list;
 }
+
+function reverseList(list) {
+  if (!!list.head) {
+    list = list.head;
+  }
+
+  let current = list;
+  let previous = list;
+  let secondPrev = list;
+
+  while (current !== null) {
+    console.log(current)
+    current = current.next;
+    previous.next = secondPrev;
+    secondPrev = previous;
+    previous = current;
+  }
+
+  previous.next = secondPrev;
+  
+  return list;
+}
+
+
+function reverseListTwo(list) {
+  if(!!list.head) {
+    list = list.head;
+  }
+
+  let current = list;
+  let target = list.next;
+
+  while (target !== null) {
+    console.log(`current: ${current.value}`)
+    let newCur = target.next;
+    target.next = current;
+    current = target;
+    target = newCur;
+  }
+
+  list = current;
+  return list;
+}
+
+
+/*
+  
+  cur         tar         newCur
+  ()    <-    ()     ->     ()
+
+*/
 
 main();
 
